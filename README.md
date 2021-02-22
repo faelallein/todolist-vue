@@ -3,9 +3,9 @@
 ## 1 - Rodar a Api
 
 ```
-Abrir a pasta api pelo cmd e executar java -jar api-todolist.jar
+Abrir a pasta src/api pelo cmd e executar java -jar api-todolist.jar
 
-API utiliza H2 como dependência, mantem as informações enquanto esta rodando.
+API utiliza H2 como dependÃªncia, mantem as informaÃ§Ãµes enquanto esta rodando.
 ```
 
 ## 2 - Project setup
