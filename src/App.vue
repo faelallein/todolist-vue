@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Title />
+    <Form   :arrayTasks="arrayTasks" />
+    <Tasks  :arrayTasks="arrayTasks" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Title from "./components/Title";
+import Form from "./components/Form";
+import Tasks from "./components/Tasks";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  components: { Title, Form, Tasks, },
+  data() {
+    return { arrayTasks: [] };
+  },
+  created: function () {
+    var requestOptions = { method: "GET" };
+
+    fetch("http://localhost:8080/api/tasks", requestOptions)
+      .then((response) => response.json())
+      .then((result) => this.arrayTasks = result )
+      .catch((error) => console.log("error", error));
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: sans-serif;
+    text-align: center;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
